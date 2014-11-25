@@ -7,39 +7,39 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
-@Document( indexName = "elasticestate" , type = "importRecord")
+@Document(indexName = "elasticestate", type = "importRecord")
 public class ImportRecord {
 
-	@Id
+    @Id
     private String id;
 
-	@Field(type = FieldType.Date)
-	private Date startTime;
-	
-	@Field(type = FieldType.Date)
-	private Date endTime;
+    @Field(type = FieldType.Date)
+    private Date startTime;
 
-	public String getId() {
-		return id;
-	}
+    @Field(type = FieldType.Date)
+    private Date endTime;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public Date getStartTime() {
-		return startTime;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public void setStartTime(Date startTime) {
-		this.startTime = startTime;
-	}
+    public Date getStartTime() {
+        return startTime;
+    }
 
-	public Date getEndTime() {
-		return endTime;
-	}
+    public void setStartTime(Date startTime) {
+        this.startTime = startTime;
+    }
 
-	public void setEndTime(Date endTime) {
-		this.endTime = endTime;
-	}
+    public Date getEndTime() {
+        return endTime;
+    }
+
+    public void setEndTime(Date endTime) {
+        this.endTime = endTime;
+    }
 }

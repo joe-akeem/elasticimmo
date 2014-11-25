@@ -5,51 +5,59 @@ import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
 public class EstateGeo {
-	
-	@Id
+
+    @Id
     private String id;
 
-	@Field(type = FieldType.String)
-	private String zipCode;
-	
-	@Field(type = FieldType.String)
-	private String city;
-	
-	@Field(type = FieldType.String)
-	private String street;
-	
-	@Field(type = FieldType.String)
-	private String houseNo;
+    @Field(type = FieldType.String)
+    private String zipCode;
 
-	public String getZipCode() {
-		return zipCode;
-	}
+    @Field(type = FieldType.String)
+    private String city;
 
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
-	}
+    @Field(type = FieldType.String)
+    private String street;
 
-	public String getCity() {
-		return city;
-	}
+    @Field(type = FieldType.String)
+    private String houseNo;
+    
+    public String getId() {
+        return id;
+    }
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getStreet() {
-		return street;
-	}
+    public String getZipCode() {
+        return zipCode;
+    }
 
-	public void setStreet(String street) {
-		this.street = street;
-	}
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
 
-	public String getHouseNo() {
-		return houseNo;
-	}
+    public String getCity() {
+        return city;
+    }
 
-	public void setHouseNo(String houseNo) {
-		this.houseNo = houseNo;
-	}
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getStreet() {
+        return street;
+    }
+
+    public void setStreet(String street) {
+        this.street = street;
+    }
+
+    public String getHouseNo() {
+        return houseNo;
+    }
+
+    public void setHouseNo(String houseNo) {
+        this.houseNo = houseNo;
+    }
 }

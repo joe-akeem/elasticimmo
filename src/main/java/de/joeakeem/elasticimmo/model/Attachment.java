@@ -5,58 +5,58 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
 
 public class Attachment {
 
-	@Field(type = FieldType.String)
-	private String title;
-	
-	@Field(type = FieldType.String)
-	private String group;
-	
-	@Field(type = FieldType.String)
-	private String location;
-	
-	@Field(type = FieldType.String)
-	private String format;
-	
-	@Field(type = FieldType.String)
-	private String path;
+    @Field(type = FieldType.String)
+    private String title;
 
-	public String getTitle() {
-		return title;
-	}
+    @Field(type = FieldType.String)
+    private String group;
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    @Field(type = FieldType.String)
+    private String location;
 
-	public String getGroup() {
-		return group;
-	}
+    @Field(type = FieldType.String)
+    private String format;
 
-	public void setGroup(String group) {
-		this.group = group;
-	}
+    @Field(type = FieldType.String)
+    private String path;
 
-	public String getLocation() {
-		return location;
-	}
+    public String getTitle() {
+        return title;
+    }
 
-	public void setLocation(String location) {
-		this.location = location;
-	}
+    public void setTitle(String title) {
+        this.title = title;
+    }
 
-	public String getFormat() {
-		return format;
-	}
+    public String getGroup() {
+        return group;
+    }
 
-	public void setFormat(String format) {
-		this.format = format;
-	}
+    public void setGroup(String group) {
+        this.group = group;
+    }
 
-	public String getPath() {
-		return path;
-	}
+    public String getLocation() {
+        return location;
+    }
 
-	public void setPath(String path) {
-		this.path = path;
-	}
+    public void setLocation(String location) {
+        this.location = location;
+    }
+
+    public String getFormat() {
+        return format;
+    }
+
+    public void setFormat(String format) {
+        this.format = format;
+    }
+
+    public String getPath() {
+        return path;
+    }
+
+    public void setPath(String path) {
+        this.path = path;
+    }
 }

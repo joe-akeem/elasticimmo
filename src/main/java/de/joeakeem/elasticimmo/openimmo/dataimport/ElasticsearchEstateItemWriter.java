@@ -14,24 +14,25 @@ import de.joeakeem.elasticimmo.repository.EstateRepository;
 
 @Component
 public class ElasticsearchEstateItemWriter implements ItemWriter<Estate> {
-	
-	private final static Logger LOG = LoggerFactory.getLogger(ElasticsearchEstateItemWriter.class);
-	
-	@Inject
-	private EstateRepository estateRepo;
 
-	@Override
-	public void write(List<? extends Estate> estates) throws Exception {
-		for (Estate estate : estates) {
-			
-			if ("DELETE".equals(estate.getMode())) {
-				estateRepo.delete(estate);
-				LOG.debug("Deleted estate with id = '{}'", estate.getId());
-			} else {
-				estateRepo.save(estate);
-				LOG.debug("Saved or updated estate with id = '{}'", estate.getId());
-			}
-		}
-	}
+    private static final Logger LOG = LoggerFactory
+            .getLogger(ElasticsearchEstateItemWriter.class);
+
+    @Inject
+    private EstateRepository estateRepo;
+
+    @Override
+    public void write(List<? extends Estate> estates) throws Exception {
+        for (Estate estate : estates) {
+
+            if ("DELETE".equals(estate.getMode())) {
+                estateRepo.delete(estate);
+                LOG.debug("Deleted estate with id = '{}'", estate.getId());
+            } else {
+                estateRepo.save(estate);
+                LOG.debug("Saved or updated estate with id = '{}'",
+                        estate.getId());
+            }
+        }
+    }
 }
-

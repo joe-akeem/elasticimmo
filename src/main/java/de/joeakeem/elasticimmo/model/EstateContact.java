@@ -5,95 +5,103 @@ import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
 public class EstateContact {
-	
-	@Id
+
+    @Id
     private String id;
 
-	@Field(type = FieldType.String)
-	private String firstName;
-	
-	@Field(type = FieldType.String)
-	private String lastName;
-	
-	@Field(type = FieldType.String)
-	private String street;
-	
-	@Field(type = FieldType.String)
-	private String houseNo;
-	
-	@Field(type = FieldType.String)
-	private String zipCode;
-	
-	@Field(type = FieldType.String)
-	private String city;
-	
-	@Field(type = FieldType.String)
-	private String emailDirect;
-	
-	@Field(type = FieldType.String)
-	private String mobile;
+    @Field(type = FieldType.String)
+    private String firstName;
 
-	public String getFirstName() {
-		return firstName;
-	}
+    @Field(type = FieldType.String)
+    private String lastName;
 
-	public void setFirstName(String firstName) {
-		this.firstName = firstName;
-	}
+    @Field(type = FieldType.String)
+    private String street;
 
-	public String getLastName() {
-		return lastName;
-	}
+    @Field(type = FieldType.String)
+    private String houseNo;
 
-	public void setLastName(String lastName) {
-		this.lastName = lastName;
-	}
+    @Field(type = FieldType.String)
+    private String zipCode;
 
-	public String getStreet() {
-		return street;
-	}
+    @Field(type = FieldType.String)
+    private String city;
 
-	public void setStreet(String street) {
-		this.street = street;
-	}
+    @Field(type = FieldType.String)
+    private String emailDirect;
 
-	public String getHouseNo() {
-		return houseNo;
-	}
+    @Field(type = FieldType.String)
+    private String mobile;
+    
+    public String getId() {
+        return id;
+    }
 
-	public void setHouseNo(String houseNo) {
-		this.houseNo = houseNo;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getZipCode() {
-		return zipCode;
-	}
+    public String getFirstName() {
+        return firstName;
+    }
 
-	public void setZipCode(String zipCode) {
-		this.zipCode = zipCode;
-	}
+    public void setFirstName(String firstName) {
+        this.firstName = firstName;
+    }
 
-	public String getCity() {
-		return city;
-	}
+    public String getLastName() {
+        return lastName;
+    }
 
-	public void setCity(String city) {
-		this.city = city;
-	}
+    public void setLastName(String lastName) {
+        this.lastName = lastName;
+    }
 
-	public String getEmailDirect() {
-		return emailDirect;
-	}
+    public String getStreet() {
+        return street;
+    }
 
-	public void setEmailDirect(String emailDirect) {
-		this.emailDirect = emailDirect;
-	}
+    public void setStreet(String street) {
+        this.street = street;
+    }
 
-	public String getMobile() {
-		return mobile;
-	}
+    public String getHouseNo() {
+        return houseNo;
+    }
 
-	public void setMobile(String mobile) {
-		this.mobile = mobile;
-	}
+    public void setHouseNo(String houseNo) {
+        this.houseNo = houseNo;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public String getCity() {
+        return city;
+    }
+
+    public void setCity(String city) {
+        this.city = city;
+    }
+
+    public String getEmailDirect() {
+        return emailDirect;
+    }
+
+    public void setEmailDirect(String emailDirect) {
+        this.emailDirect = emailDirect;
+    }
+
+    public String getMobile() {
+        return mobile;
+    }
+
+    public void setMobile(String mobile) {
+        this.mobile = mobile;
+    }
 }

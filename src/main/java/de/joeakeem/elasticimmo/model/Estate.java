@@ -9,110 +9,112 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
-@Document( indexName = "elasticestate" , type = "estate")
+@Document(indexName = "elasticestate", type = "estate")
 public class Estate {
+    
+    private static final int MAX_ATTACHMENTS = 5;
 
-	@Id
+    @Id
     private String id;
-	
-	@Field(type = FieldType.Boolean)
-	private boolean livingEstate;
-	
-	@Transient
-	private String mode;
-	
-	@Field(type = FieldType.Date)
-	private Date lastModified = new Date();
-	
-	@Field(type = FieldType.String)
-	private String title;
-	
-	@Field(type = FieldType.Nested)
-	private EstateGeo estateGeo;
-	
-	@Field(type = FieldType.Boolean)
-	private boolean showAddress = Boolean.FALSE;
-	
-	@Field(type = FieldType.Nested)
-	private List<Attachment> attachments;
-	
-	@Field(type = FieldType.Nested)
-	private EstateContact estateContact;
 
-	public String getId() {
-		return id;
-	}
+    @Field(type = FieldType.Boolean)
+    private boolean livingEstate;
 
-	public void setId(String id) {
-		this.id = id;
-	}
+    @Transient
+    private String mode;
 
-	public boolean isLivingEstate() {
-		return livingEstate;
-	}
+    @Field(type = FieldType.Date)
+    private Date lastModified = new Date();
 
-	public void setLivingEstate(boolean livingEstate) {
-		this.livingEstate = livingEstate;
-	}
+    @Field(type = FieldType.String)
+    private String title;
 
-	public Date getLastModified() {
-		return lastModified;
-	}
+    @Field(type = FieldType.Nested)
+    private EstateGeo estateGeo;
 
-	public void setLastModified(Date lastModified) {
-		this.lastModified = lastModified;
-	}
+    @Field(type = FieldType.Boolean)
+    private boolean showAddress = Boolean.FALSE;
 
-	public String getMode() {
-		return mode;
-	}
+    @Field(type = FieldType.Nested)
+    private List<Attachment> attachments;
 
-	public void setMode(String mode) {
-		this.mode = mode;
-	}
+    @Field(type = FieldType.Nested)
+    private EstateContact estateContact;
 
-	public EstateGeo getEstateGeo() {
-		return estateGeo;
-	}
+    public String getId() {
+        return id;
+    }
 
-	public void setEstateGeo(EstateGeo estateGeo) {
-		this.estateGeo = estateGeo;
-	}
+    public void setId(String id) {
+        this.id = id;
+    }
 
-	public String getTitle() {
-		return title;
-	}
+    public boolean isLivingEstate() {
+        return livingEstate;
+    }
 
-	public void setTitle(String title) {
-		this.title = title;
-	}
+    public void setLivingEstate(boolean livingEstate) {
+        this.livingEstate = livingEstate;
+    }
 
-	public boolean isShowAddress() {
-		return showAddress;
-	}
+    public Date getLastModified() {
+        return lastModified;
+    }
 
-	public void setShowAddress(boolean showAddress) {
-		this.showAddress = showAddress;
-	}
+    public void setLastModified(Date lastModified) {
+        this.lastModified = lastModified;
+    }
 
-	public List<Attachment> getAttachments() {
-		return attachments;
-	}
+    public String getMode() {
+        return mode;
+    }
 
-	public void setAttachments(List<Attachment> attachments) {
-		this.attachments = attachments;
-	}
-	
-	public List<Attachment> getTop5Attachments() {
-		int max = attachments.size();
-		return attachments.subList(0, max < 5 ? max : 5);
-	}
+    public void setMode(String mode) {
+        this.mode = mode;
+    }
 
-	public EstateContact getEstateContact() {
-		return estateContact;
-	}
+    public EstateGeo getEstateGeo() {
+        return estateGeo;
+    }
 
-	public void setEstateContact(EstateContact estateContact) {
-		this.estateContact = estateContact;
-	}
+    public void setEstateGeo(EstateGeo estateGeo) {
+        this.estateGeo = estateGeo;
+    }
+
+    public String getTitle() {
+        return title;
+    }
+
+    public void setTitle(String title) {
+        this.title = title;
+    }
+
+    public boolean isShowAddress() {
+        return showAddress;
+    }
+
+    public void setShowAddress(boolean showAddress) {
+        this.showAddress = showAddress;
+    }
+
+    public List<Attachment> getAttachments() {
+        return attachments;
+    }
+
+    public void setAttachments(List<Attachment> attachments) {
+        this.attachments = attachments;
+    }
+
+    public List<Attachment> getTop5Attachments() {
+        int max = attachments.size();
+        return attachments.subList(0, max < MAX_ATTACHMENTS ? max : MAX_ATTACHMENTS);
+    }
+
+    public EstateContact getEstateContact() {
+        return estateContact;
+    }
+
+    public void setEstateContact(EstateContact estateContact) {
+        this.estateContact = estateContact;
+    }
 }
