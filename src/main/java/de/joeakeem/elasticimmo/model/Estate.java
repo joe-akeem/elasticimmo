@@ -9,7 +9,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
-@Document(indexName = "elasticestate", type = "estate")
+@Document(indexName = "elasticimmo", type = "estate")
 public class Estate {
     
     private static final int MAX_ATTACHMENTS = 5;
@@ -26,19 +26,19 @@ public class Estate {
     @Field(type = FieldType.Date)
     private Date lastModified = new Date();
 
-    @Field(type = FieldType.String)
+    @Field(type = FieldType.String, searchAnalyzer="german", indexAnalyzer="german")
     private String title;
 
-    @Field(type = FieldType.Nested)
+    @Field
     private EstateGeo estateGeo;
 
     @Field(type = FieldType.Boolean)
     private boolean showAddress = Boolean.FALSE;
 
-    @Field(type = FieldType.Nested)
+    @Field
     private List<Attachment> attachments;
 
-    @Field(type = FieldType.Nested)
+    @Field
     private EstateContact estateContact;
 
     public String getId() {
