@@ -7,7 +7,7 @@ The main purpose of this project is to import real estate information provided i
 
 #Fixing XML Files before importing
 ##Immonet
-$ sed -i 's/<openimmo xmlns="http:\/\/www.openimmo.de">/<openimmo>/' immonet_export.xml
+'$ sed -i 's/<openimmo xmlns="http:\/\/www.openimmo.de">/<openimmo>/' immonet_export.xml'
 
 #Running OpenImmo import with Maven
 
@@ -15,7 +15,7 @@ $ sed -i 's/<openimmo xmlns="http:\/\/www.openimmo.de">/<openimmo>/' immonet_exp
 
 Specifying the elasticsearch cluster nodes and an OpenImmo XML file:
 
-`mvn install exec:java -Dcluster-nodes=localhost:9301 -Dopenimmo.import.file=/home/joeakeem/openimmo/openimmo-data_127.xml Dexec.mainClass="de.joeakeem.elasticimmo.openimmo.dataimport.OpenImmoImporter"`
+`mvn install exec:java -Dcluster-nodes=localhost:9301 -Dopenimmo.import.file=file:///home/joeakeem/openimmo/openimmo-data_127.xml -Dexec.mainClass="de.joeakeem.elasticimmo.openimmo.dataimport.OpenImmoImporter"`
 
 Defaults are:
 * cluster-nodes=localhost:9300
