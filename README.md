@@ -5,6 +5,10 @@ The main purpose of this project is to import real estate information provided i
 
 [1] http://www.openimmo.de/
 
+#Fixing XML Files before importing
+##Immonet
+$ sed -i 's/<openimmo xmlns="http:\/\/www.openimmo.de">/<openimmo>/' immonet_export.xml
+
 #Running OpenImmo import with Maven
 
 `mvn install exec:java -Dexec.mainClass="de.joeakeem.elasticimmo.openimmo.dataimport.OpenImmoImporter"`
