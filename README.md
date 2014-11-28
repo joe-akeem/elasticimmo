@@ -7,7 +7,7 @@ The main purpose of this project is to import real estate information provided i
 
 #Fixing XML Files before importing
 ##Immonet
-'$ sed -i 's/<openimmo xmlns="http:\/\/www.openimmo.de">/<openimmo>/' immonet_export.xml'
+$ sed -i 's/<openimmo xmlns="http:\/\/www.openimmo.de">/<openimmo>/' immonet_export.xml
 
 #Running OpenImmo import with Maven
 
