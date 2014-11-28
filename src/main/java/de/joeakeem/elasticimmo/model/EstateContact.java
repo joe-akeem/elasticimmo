@@ -2,6 +2,7 @@ package de.joeakeem.elasticimmo.model;
 
 import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldIndex;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
 /**
@@ -21,22 +22,22 @@ public class EstateContact {
     @Field(type = FieldType.String)
     private String lastName;
 
-    @Field(type = FieldType.String)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String street;
 
-    @Field(type = FieldType.String)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String houseNo;
 
-    @Field(type = FieldType.String)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String zipCode;
 
-    @Field(type = FieldType.String)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String city;
 
-    @Field(type = FieldType.String)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String emailDirect;
 
-    @Field(type = FieldType.String)
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String mobile;
     
     public String getId() {
