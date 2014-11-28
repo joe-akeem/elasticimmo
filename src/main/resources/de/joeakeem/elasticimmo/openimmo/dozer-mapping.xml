@@ -25,7 +25,7 @@
 		</field>
 		<field>
 			<a>objektkategorie.nutzungsart.WOHNEN</a>
-			<b>livingEstate</b>
+			<b>residential</b>
 		</field>
 		<field>
 			<a>verwaltungTechn.aktion.aktionart</a>
@@ -64,10 +64,6 @@
 		<field>
 			<a>gruppe</a>
 			<b>group</b>
-		</field>
-		<field>
-			<a>location</a>
-			<b>location</b>
 		</field>
 		<field>
 			<a>format</a>

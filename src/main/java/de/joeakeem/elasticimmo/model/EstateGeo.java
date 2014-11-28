@@ -4,6 +4,12 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
+/**
+ * Represents the geographical location of an estate.
+ * 
+ * @author joe
+ *
+ */
 public class EstateGeo {
 
     @Id

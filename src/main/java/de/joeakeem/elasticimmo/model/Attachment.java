@@ -3,6 +3,11 @@ package de.joeakeem.elasticimmo.model;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
+/**
+ * Represents an attachment of a real estate such as a picture, a PDF file etc.
+ * @author Joachim Lengacher
+ *
+ */
 public class Attachment {
 
     @Field(type = FieldType.String)
@@ -12,14 +17,14 @@ public class Attachment {
     private String group;
 
     @Field(type = FieldType.String)
-    private String location;
-
-    @Field(type = FieldType.String)
     private String format;
 
     @Field(type = FieldType.String)
     private String path;
 
+    /**
+     * @return a descriptive title that can be used e.g. as immage caption.
+     */
     public String getTitle() {
         return title;
     }
@@ -28,6 +33,9 @@ public class Attachment {
         this.title = title;
     }
 
+    /**
+     * @return the attachment group such as 'FILM' 'IMAGE'
+     */
     public String getGroup() {
         return group;
     }
@@ -36,14 +44,9 @@ public class Attachment {
         this.group = group;
     }
 
-    public String getLocation() {
-        return location;
-    }
-
-    public void setLocation(String location) {
-        this.location = location;
-    }
-
+    /**
+     * @return the format of the attachment such as JPG, PDF etc. 
+     */
     public String getFormat() {
         return format;
     }
@@ -52,6 +55,9 @@ public class Attachment {
         this.format = format;
     }
 
+    /**
+     * @return the physical location of the attachment (e.g. a file name/path or a URL)
+     */
     public String getPath() {
         return path;
     }

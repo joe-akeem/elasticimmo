@@ -7,8 +7,17 @@ import org.dozer.CustomConverter;
 import de.joeakeem.elasticimmo.model.EstateGeo;
 import de.joeakeem.elasticimmo.openimmo.model.Geo;
 
+/**
+ * Converts an OpenImmo Geo instance into an EstateGeo instance.
+ * 
+ * @author 
+ *
+ */
 public class EstateGeoConverter implements CustomConverter {
 
+    /**
+     * Converts an OpenImmo Geo instance into an EstateGeo instance.
+     */
     @Override
     public Object convert(Object destination, Object source,
             Class<?> destinationClass, Class<?> sourceClass) {

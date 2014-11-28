@@ -13,8 +13,6 @@ import de.joeakeem.elasticimmo.model.Estate;
 public interface EstateRepository extends
         ElasticsearchCrudRepository<Estate, String> {
 
-    Long countByLivingEstate(boolean livingEstate, SearchQuery query);
-
     @Query("{\"nested\" : {\"path\" : \"estateGeo\",\"query\" : {\"query_string\" : {\"fields\" : [\"city\", \"zipCode\"],\"query\" : \"?0\"}}}}")
     List<Estate> findByLocation(String location);
 

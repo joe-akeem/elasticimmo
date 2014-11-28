@@ -9,6 +9,12 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
+/**
+ * Represents a real estate.
+ * 
+ * @author Joachim Lengacher
+ *
+ */
 @Document(indexName = "elasticimmo", type = "estate")
 public class Estate {
     
@@ -18,7 +24,7 @@ public class Estate {
     private String id;
 
     @Field(type = FieldType.Boolean)
-    private boolean livingEstate;
+    private boolean residential;
 
     @Transient
     private String mode;
@@ -49,14 +55,20 @@ public class Estate {
         this.id = id;
     }
 
-    public boolean isLivingEstate() {
-        return livingEstate;
+    /**
+     * @return true if this is a 'Wohnimmobilie', false otherwise.
+     */
+    public boolean isResidential() {
+        return residential;
     }
 
-    public void setLivingEstate(boolean livingEstate) {
-        this.livingEstate = livingEstate;
+    public void setResidential(boolean residential) {
+        this.residential = residential;
     }
 
+    /**
+     * @return the time this esate was created or last updated.
+     */
     public Date getLastModified() {
         return lastModified;
     }
@@ -65,6 +77,9 @@ public class Estate {
         this.lastModified = lastModified;
     }
 
+    /**
+     * @return the update mode
+     */
     public String getMode() {
         return mode;
     }
@@ -73,6 +88,9 @@ public class Estate {
         this.mode = mode;
     }
 
+    /**
+     * @return the geographical location of the estate
+     */
     public EstateGeo getEstateGeo() {
         return estateGeo;
     }
@@ -81,6 +99,9 @@ public class Estate {
         this.estateGeo = estateGeo;
     }
 
+    /**
+     * @return a descriptive title that can be used e.g. as headline in search results.
+     */
     public String getTitle() {
         return title;
     }
@@ -89,6 +110,9 @@ public class Estate {
         this.title = title;
     }
 
+    /**
+     * @return true if the the address (estateGeo) of the estate me be displayed.
+     */
     public boolean isShowAddress() {
         return showAddress;
     }
@@ -97,6 +121,9 @@ public class Estate {
         this.showAddress = showAddress;
     }
 
+    /**
+     * @return a list of attachemnts like immages, PDF files etc.
+     */
     public List<Attachment> getAttachments() {
         return attachments;
     }
@@ -105,11 +132,17 @@ public class Estate {
         this.attachments = attachments;
     }
 
+    /**
+     * @return maximum 5 attachments of the estate (or less if it doesn't have 5).
+     */
     public List<Attachment> getTop5Attachments() {
         int max = attachments.size();
         return attachments.subList(0, max < MAX_ATTACHMENTS ? max : MAX_ATTACHMENTS);
     }
 
+    /**
+     * @return the contact for parties interested in the estate - typically a broker or the owner. 
+     */
     public EstateContact getEstateContact() {
         return estateContact;
     }

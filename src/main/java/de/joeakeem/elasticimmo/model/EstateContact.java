@@ -4,6 +4,12 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
+/**
+ * Represents a contact of an estate such as the owner or a real estate agent.
+ * 
+ * @author Joachim Lengacher
+ *
+ */
 public class EstateContact {
 
     @Id

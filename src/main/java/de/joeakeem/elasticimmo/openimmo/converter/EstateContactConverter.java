@@ -7,8 +7,17 @@ import org.dozer.CustomConverter;
 import de.joeakeem.elasticimmo.openimmo.model.Kontaktperson;
 import de.joeakeem.elasticimmo.model.EstateContact;
 
+/**
+ * Converts an OpenImmo Kontaktperson into an EstateContact.
+ * 
+ * @author Joachim Lengacher
+ *
+ */
 public class EstateContactConverter implements CustomConverter {
 
+    /**
+     * Converts an OpenImmo Kontaktperson into an EstateContact.
+     */
     @Override
     public Object convert(Object destination, Object source,
             Class<?> destinationClass, Class<?> sourceClass) {
