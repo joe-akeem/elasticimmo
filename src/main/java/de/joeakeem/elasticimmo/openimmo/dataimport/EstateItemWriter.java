@@ -13,10 +13,10 @@ import de.joeakeem.elasticimmo.model.Estate;
 import de.joeakeem.elasticimmo.repository.EstateRepository;
 
 @Component
-public class ElasticsearchEstateItemWriter implements ItemWriter<Estate> {
+public class EstateItemWriter implements ItemWriter<Estate> {
 
     private static final Logger LOG = LoggerFactory
-            .getLogger(ElasticsearchEstateItemWriter.class);
+            .getLogger(EstateItemWriter.class);
 
     @Inject
     private EstateRepository estateRepo;

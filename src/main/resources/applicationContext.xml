@@ -40,7 +40,7 @@
 	<batch:job id="openImmoImportJob">
 		<batch:step id="step1">
 			<batch:tasklet>
-				<batch:chunk reader="xmlItemReader" writer="elasticsearchEstateItemWriter"
+				<batch:chunk reader="xmlItemReader" writer="estateItemWriter"
 					processor="estateItemProcessor" commit-interval="1">
 				</batch:chunk>
 			</batch:tasklet>
