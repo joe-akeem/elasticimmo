@@ -74,4 +74,48 @@
 			<b>path</b>
 		</field>
 	</mapping>
+	<mapping>
+		<class-a>de.joeakeem.elasticimmo.openimmo.model.ImpressumStrukt</class-a>
+		<class-b>de.joeakeem.elasticimmo.model.Impressum</class-b>
+		<field>
+			<a>firmenname</a>
+			<b>company</b>
+		</field>
+		<field>
+			<a>telefon</a>
+			<b>phone</b>
+		</field>
+		<field>
+			<a>firmenanschrift</a>
+			<b>companyAddress</b>
+		</field>
+		<field>
+			<a>vertretungsberechtigter</a>
+			<b>representrative</b>
+		</field>
+		<field>
+			<a>berufsaufsichtsbehoerde</a>
+			<b>businessSupervisionOffice</b>
+		</field>
+		<field>
+			<a>handelsregister</a>
+			<b>tradeRegister</b>
+		</field>
+		<field>
+			<a>handelsregisterNr</a>
+			<b>tradeRegisterNo</b>
+		</field>
+		<field>
+			<a>umsstId</a>
+			<b>vatId</b>
+		</field>
+		<field>
+			<a>steuernummer</a>
+			<b>taxNumber</b>
+		</field>
+		<field>
+			<a>weiteres</a>
+			<b>more</b>
+		</field>
+	</mapping>
 </mappings>

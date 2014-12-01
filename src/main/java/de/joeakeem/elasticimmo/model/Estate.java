@@ -7,6 +7,7 @@ import org.springframework.data.annotation.Id;
 import org.springframework.data.annotation.Transient;
 import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
+import org.springframework.data.elasticsearch.annotations.FieldIndex;
 import org.springframework.data.elasticsearch.annotations.FieldType;
 
 /**
@@ -22,6 +23,9 @@ public class Estate {
 
     @Id
     private String id;
+
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
+    private String providerId;
 
     @Field(type = FieldType.Boolean)
     private boolean residential;
@@ -46,13 +50,27 @@ public class Estate {
 
     @Field
     private EstateContact estateContact;
-
+    
+    @Field(type = FieldType.String, searchAnalyzer="german", indexAnalyzer="german")
+    private String impressumAsString;
+    
+    @Field
+    private Impressum impressum; 
+    
     public String getId() {
         return id;
     }
 
     public void setId(String id) {
         this.id = id;
+    }
+
+    public String getProviderId() {
+        return providerId;
+    }
+
+    public void setProviderId(String providerId) {
+        this.providerId = providerId;
     }
 
     /**
@@ -149,5 +167,21 @@ public class Estate {
 
     public void setEstateContact(EstateContact estateContact) {
         this.estateContact = estateContact;
+    }
+
+    public String getImpressumAsString() {
+        return impressumAsString;
+    }
+
+    public void setImpressumAsString(String impressumAsString) {
+        this.impressumAsString = impressumAsString;
+    }
+
+    public Impressum getImpressum() {
+        return impressum;
+    }
+
+    public void setImpressum(Impressum impressum) {
+        this.impressum = impressum;
     }
 }
