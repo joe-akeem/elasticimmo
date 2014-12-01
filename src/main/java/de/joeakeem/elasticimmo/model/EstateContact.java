@@ -1,6 +1,5 @@
 package de.joeakeem.elasticimmo.model;
 
-import org.springframework.data.annotation.Id;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldIndex;
 import org.springframework.data.elasticsearch.annotations.FieldType;
@@ -12,9 +11,6 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
  *
  */
 public class EstateContact {
-
-    @Id
-    private String id;
 
     @Field(type = FieldType.String)
     private String firstName;
@@ -39,14 +35,6 @@ public class EstateContact {
 
     @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String mobile;
-    
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getFirstName() {
         return firstName;

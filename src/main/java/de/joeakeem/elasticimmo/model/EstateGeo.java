@@ -13,9 +13,6 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
  */
 public class EstateGeo {
 
-    @Id
-    private String id;
-
     @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String zipCode;
 
@@ -27,14 +24,6 @@ public class EstateGeo {
 
     @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String houseNo;
-    
-    public String getId() {
-        return id;
-    }
-
-    public void setId(String id) {
-        this.id = id;
-    }
 
     public String getZipCode() {
         return zipCode;
