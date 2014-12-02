@@ -9,6 +9,7 @@ import org.springframework.data.elasticsearch.annotations.Document;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldIndex;
 import org.springframework.data.elasticsearch.annotations.FieldType;
+import org.springframework.data.elasticsearch.core.geo.GeoPoint;
 
 /**
  * Represents a real estate.
@@ -62,6 +63,9 @@ public class Estate {
 
     @Field
     private Impressum impressum;
+    
+    @Field
+    private GeoPoint location;
 
     public String getId() {
         return id;
@@ -210,5 +214,13 @@ public class Estate {
 
     public void setImpressum(Impressum impressum) {
         this.impressum = impressum;
+    }
+
+    public GeoPoint getLocation() {
+        return location;
+    }
+
+    public void setLocation(GeoPoint location) {
+        this.location = location;
     }
 }

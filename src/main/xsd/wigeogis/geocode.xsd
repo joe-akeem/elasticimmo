@@ -1,0 +1,97 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema"
+	elementFormDefault="qualified" attributeFormDefault="unqualified">
+	<!-- XML Schema Generated from XML Document on Tue Dec 02 2014 17:00:21 
+		GMT+0100 -->
+	<!-- with XmlGrid.net Free Online Service http://xmlgrid.net -->
+	<xs:element name="GEOCODE">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="INPUT">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="STR" type="xs:string" minOccurs="0"></xs:element>
+							<xs:element name="HNR" type="xs:string" minOccurs="0"></xs:element>
+							<xs:element name="ZIP" type="xs:string" minOccurs="0"></xs:element>
+							<xs:element name="CITY" type="xs:string" minOccurs="0"></xs:element>
+							<xs:element name="MODE" type="xs:string" minOccurs="0"></xs:element>
+							<xs:element name="SML" type="xs:int" minOccurs="0"></xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="SUMMARY">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="ACC" type="xs:string" minOccurs="0"></xs:element>
+							<xs:element name="RECORDS" type="xs:int"></xs:element>
+							<xs:element name="PRJ" type="xs:string" minOccurs="0"></xs:element>
+							<xs:element name="RELEASEDATE" type="xs:string" minOccurs="0"></xs:element>
+							<xs:element name="CTRISO" type="xs:string" minOccurs="0"></xs:element>
+							<xs:element name="SRC" type="xs:int" minOccurs="0"></xs:element>
+							<xs:element name="DBSRC" minOccurs="0"></xs:element>
+							<xs:element name="QUALID" type="xs:int"></xs:element>
+							<xs:element name="EDITID" type="xs:int" minOccurs="0"></xs:element>
+							<xs:element name="ERRORCODE" type="xs:int"></xs:element>
+							<xs:element name="MESSAGE" type="xs:int" minOccurs="0"></xs:element>
+							<xs:element name="ORDERSH" type="xs:int" minOccurs="0"></xs:element>
+							<xs:element name="ORDERZC" type="xs:int" minOccurs="0"></xs:element>
+							<xs:element name="GCQUALFLAG" minOccurs="0">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="STR" type="xs:int"></xs:element>
+										<xs:element name="HNR" type="xs:int"></xs:element>
+										<xs:element name="APP" type="xs:int"></xs:element>
+										<xs:element name="ZIP" type="xs:int"></xs:element>
+										<xs:element name="CITY" type="xs:int"></xs:element>
+										<xs:element name="DIST" type="xs:int"></xs:element>
+									</xs:sequence>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="OUTPUT">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="SET">
+								<xs:complexType>
+									<xs:sequence>
+										<xs:element name="ID" type="xs:int"></xs:element>
+										<xs:element name="LNGCODE" type="xs:string"></xs:element>
+										<xs:element name="XCOOR" type="xs:double"></xs:element>
+										<xs:element name="YCOOR" type="xs:double"></xs:element>
+										<xs:element name="COQ" type="xs:int"></xs:element>
+										<xs:element name="ZIP" type="xs:string" minOccurs="0"></xs:element>
+										<xs:element name="ZIPNAME" type="xs:string" minOccurs="0"></xs:element>
+										<xs:element name="CITY" type="xs:string" minOccurs="0"></xs:element>
+										<xs:element name="ZIPCITY" type="xs:string" minOccurs="0"></xs:element>
+										<xs:element name="SMLCITY" type="xs:int" minOccurs="0"></xs:element>
+										<xs:element name="SMLZIPNAME" type="xs:int" minOccurs="0"></xs:element>
+										<xs:element name="DIST" type="xs:string" minOccurs="0"></xs:element>
+										<xs:element name="SMLDIST" type="xs:int" minOccurs="0"></xs:element>
+										<xs:element name="ADMCODE" type="xs:string" minOccurs="0"></xs:element>
+										<xs:element name="STR" type="xs:string" minOccurs="0"></xs:element>
+										<xs:element name="SMLSTR" type="xs:int" minOccurs="0"></xs:element>
+										<xs:element name="HNR" type="xs:string" minOccurs="0"></xs:element>
+										<xs:element name="APP" type="xs:string" minOccurs="0"></xs:element>
+										<xs:element name="HNRTYPE" type="xs:int" minOccurs="0"></xs:element>
+										<xs:element name="ADMNAME" type="xs:string" minOccurs="0"></xs:element>
+										<xs:element name="GEOZONETYPE" type="xs:string" minOccurs="0"></xs:element>
+										<xs:element name="XMIN" type="xs:double" minOccurs="0"></xs:element>
+										<xs:element name="YMIN" type="xs:double" minOccurs="0"></xs:element>
+										<xs:element name="XMAX" type="xs:double" minOccurs="0"></xs:element>
+										<xs:element name="YMAX" type="xs:double" minOccurs="0"></xs:element>
+										<xs:element name="CTR" type="xs:string" minOccurs="0"></xs:element>
+										<xs:element name="CTRISO" type="xs:string" minOccurs="0"></xs:element>
+										<xs:element name="STRCODE" type="xs:int" minOccurs="0"></xs:element>
+									</xs:sequence>
+									<xs:attribute name="NR" type="xs:int"></xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
