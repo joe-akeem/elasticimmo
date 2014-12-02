@@ -18,7 +18,7 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
  */
 @Document(indexName = "elasticimmo", type = "estate")
 public class Estate {
-    
+
     private static final int MAX_ATTACHMENTS = 5;
 
     @Id
@@ -26,6 +26,12 @@ public class Estate {
 
     @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String providerId;
+
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
+    private String distributor;
+
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
+    private String portal;
 
     @Field(type = FieldType.Boolean)
     private boolean residential;
@@ -36,7 +42,7 @@ public class Estate {
     @Field(type = FieldType.Date)
     private Date lastModified = new Date();
 
-    @Field(type = FieldType.String, searchAnalyzer="german", indexAnalyzer="german")
+    @Field(type = FieldType.String, searchAnalyzer = "german", indexAnalyzer = "german")
     private String title;
 
     @Field
@@ -50,13 +56,13 @@ public class Estate {
 
     @Field
     private EstateContact estateContact;
-    
-    @Field(type = FieldType.String, searchAnalyzer="german", indexAnalyzer="german")
+
+    @Field(type = FieldType.String, searchAnalyzer = "german", indexAnalyzer = "german")
     private String impressumAsString;
-    
+
     @Field
-    private Impressum impressum; 
-    
+    private Impressum impressum;
+
     public String getId() {
         return id;
     }
@@ -71,6 +77,22 @@ public class Estate {
 
     public void setProviderId(String providerId) {
         this.providerId = providerId;
+    }
+
+    public String getDistributor() {
+        return distributor;
+    }
+
+    public void setDistributor(String distributor) {
+        this.distributor = distributor;
+    }
+
+    public String getPortal() {
+        return portal;
+    }
+
+    public void setPortal(String portal) {
+        this.portal = portal;
     }
 
     /**
@@ -118,7 +140,8 @@ public class Estate {
     }
 
     /**
-     * @return a descriptive title that can be used e.g. as headline in search results.
+     * @return a descriptive title that can be used e.g. as headline in search
+     *         results.
      */
     public String getTitle() {
         return title;
@@ -129,7 +152,8 @@ public class Estate {
     }
 
     /**
-     * @return true if the the address (estateGeo) of the estate me be displayed.
+     * @return true if the the address (estateGeo) of the estate me be
+     *         displayed.
      */
     public boolean isShowAddress() {
         return showAddress;
@@ -151,15 +175,18 @@ public class Estate {
     }
 
     /**
-     * @return maximum 5 attachments of the estate (or less if it doesn't have 5).
+     * @return maximum 5 attachments of the estate (or less if it doesn't have
+     *         5).
      */
     public List<Attachment> getTop5Attachments() {
         int max = attachments.size();
-        return attachments.subList(0, max < MAX_ATTACHMENTS ? max : MAX_ATTACHMENTS);
+        return attachments.subList(0, max < MAX_ATTACHMENTS ? max
+                : MAX_ATTACHMENTS);
     }
 
     /**
-     * @return the contact for parties interested in the estate - typically a broker or the owner. 
+     * @return the contact for parties interested in the estate - typically a
+     *         broker or the owner.
      */
     public EstateContact getEstateContact() {
         return estateContact;
