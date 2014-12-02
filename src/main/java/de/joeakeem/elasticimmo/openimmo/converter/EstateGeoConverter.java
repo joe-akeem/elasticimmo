@@ -3,9 +3,11 @@ package de.joeakeem.elasticimmo.openimmo.converter;
 import javax.xml.bind.JAXBElement;
 
 import org.dozer.CustomConverter;
+import org.elasticsearch.common.geo.GeoPoint;
 
 import de.joeakeem.elasticimmo.model.EstateGeo;
 import de.joeakeem.elasticimmo.openimmo.model.Geo;
+import de.joeakeem.elasticimmo.openimmo.model.Geokoordinaten;
 
 /**
  * Converts an OpenImmo Geo instance into an EstateGeo instance.
@@ -41,6 +43,11 @@ public class EstateGeoConverter implements CustomConverter {
                     destinationGeo.setStreet((String) value);
                 } else if ("hausnummer".equals(name)) {
                     destinationGeo.setHouseNo((String) value);
+                } else if ("geokoordinaten".equals(name)) {
+                    Geokoordinaten geoKoordinaten = (Geokoordinaten)value;
+                    GeoPoint geoPoint = new GeoPoint(
+                            geoKoordinaten.getBreitengrad(), geoKoordinaten.getLaengengrad());
+                    destinationGeo.setLocation(geoPoint);
                 }
             }
         }

@@ -1,6 +1,6 @@
 package de.joeakeem.elasticimmo.model;
 
-import org.springframework.data.annotation.Id;
+import org.elasticsearch.common.geo.GeoPoint;
 import org.springframework.data.elasticsearch.annotations.Field;
 import org.springframework.data.elasticsearch.annotations.FieldIndex;
 import org.springframework.data.elasticsearch.annotations.FieldType;
@@ -24,6 +24,8 @@ public class EstateGeo {
 
     @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String houseNo;
+    
+    private GeoPoint location;
 
     public String getZipCode() {
         return zipCode;
@@ -55,5 +57,13 @@ public class EstateGeo {
 
     public void setHouseNo(String houseNo) {
         this.houseNo = houseNo;
+    }
+    
+    public GeoPoint getLocation() {
+        return location;
+    }
+
+    public void setLocation(GeoPoint location) {
+        this.location = location;
     }
 }
