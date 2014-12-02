@@ -1,5 +1,6 @@
 package de.joeakeem.elasticimmo.model;
 
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -183,9 +184,12 @@ public class Estate {
      *         5).
      */
     public List<Attachment> getTop5Attachments() {
-        int max = attachments.size();
-        return attachments.subList(0, max < MAX_ATTACHMENTS ? max
-                : MAX_ATTACHMENTS);
+        if (attachments != null) {
+            int max =  attachments.size();
+            return attachments.subList(0, max < MAX_ATTACHMENTS ? max
+                    : MAX_ATTACHMENTS);
+        }
+        return new ArrayList<Attachment>();
     }
 
     /**
