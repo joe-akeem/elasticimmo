@@ -29,7 +29,7 @@ public class ProviderItemProcessor implements ItemProcessor<Anbieter, List<Estat
     public List<Estate> process(Anbieter anbieter) throws Exception {
         List<Estate> estates = new ArrayList<Estate>(anbieter.getImmobilie().size());
         for (Immobilie immbobilie : anbieter.getImmobilie()) {
-            Estate estate = estateRepo.findOne(immbobilie.getVerwaltungTechn().getObjektnrIntern());
+            Estate estate = estateRepo.findOne(immbobilie.getVerwaltungTechn().getObjektnrExtern());
             if (estate != null) {
                 estate.setProviderId(anbieter.getAnbieternr());
                 Impressum impressum = new Impressum();

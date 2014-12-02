@@ -20,7 +20,7 @@
 		<class-a>de.joeakeem.elasticimmo.openimmo.model.Immobilie</class-a>
 		<class-b>de.joeakeem.elasticimmo.model.Estate</class-b>
 		<field>
-			<a>verwaltungTechn.objektnrIntern</a>
+			<a>verwaltungTechn.objektnrExtern</a>
 			<b>id</b>
 		</field>
 		<field>

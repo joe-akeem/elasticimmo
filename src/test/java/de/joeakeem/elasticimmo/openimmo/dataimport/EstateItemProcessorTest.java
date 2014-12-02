@@ -52,7 +52,7 @@ public class EstateItemProcessorTest {
     @Test
     public void testProcess() throws Exception {
         when(immobilie.getVerwaltungTechn()).thenReturn(verwaltungTechn);
-        when(verwaltungTechn.getObjektnrIntern()).thenReturn("obj_nr_int");
+        when(verwaltungTechn.getObjektnrExtern()).thenReturn("obj_nr_ext");
         when(verwaltungTechn.getAktion()).thenReturn(aktion);
         when(aktion.getAktionart()).thenReturn("UPDATE");
         when(immobilie.getFreitexte()).thenReturn(freitexte);
@@ -60,7 +60,7 @@ public class EstateItemProcessorTest {
         
         Estate estate = estateItemProcessor.process(immobilie);
         
-        assertEquals(estate.getId(), immobilie.getVerwaltungTechn().getObjektnrIntern());
+        assertEquals(estate.getId(), immobilie.getVerwaltungTechn().getObjektnrExtern());
         assertEquals(estate.getTitle(), immobilie.getFreitexte().getObjekttitel());
         assertEquals(estate.getMode(), immobilie.getVerwaltungTechn().getAktion().getAktionart());
     }
