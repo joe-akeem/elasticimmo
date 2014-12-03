@@ -3,7 +3,6 @@ package de.joeakeem.elasticimmo.openimmo.dataimport;
 import javax.inject.Inject;
 
 import org.dozer.DozerBeanMapper;
-import org.elasticsearch.common.geo.GeoPoint;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -47,29 +46,13 @@ public class EstateItemProcessor implements ItemProcessor<Immobilie, Estate> {
             estate = new Estate();
         }
         
-        // save current location if it exists
-        EstateGeo currentEstateGeo = estate.getEstateGeo();
-        GeoPoint currentLocation = null;
-        String currentCity = null;
-        if (currentEstateGeo != null) {
-            currentCity = currentEstateGeo.getCity();
-            currentLocation = currentEstateGeo.getLocation();
-        }
+        EstateGeo previousEstateGeo = estate.getEstateGeo();
         
         dozerBeanMapper.map(immobilie, estate);
         
-        // save money and network traffic:
-        // only call the geo coding service if a) we din't already have coordinates 
-        // or b) the address has changed 
         EstateGeo newEstateGeo = estate.getEstateGeo();
-        if (newEstateGeo != null) {
-            String newCity = estate.getEstateGeo().getCity();
-            if (currentLocation == null || currentCity == null || !currentCity.equals(newCity)) {
-                currentLocation = geoCodingService.geocode(newCity);
-            }
-            estate.getEstateGeo().setLocation(currentLocation);
-        }
         
+        estate.setEstateGeo(geoCodingService.geocode(newEstateGeo, previousEstateGeo));
         estate.setDistributor(distributor);
         estate.setPortal(portal);
         return estate;

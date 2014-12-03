@@ -66,4 +66,44 @@ public class EstateGeo {
     public void setLocation(GeoPoint location) {
         this.location = location;
     }
+    
+    @Override
+    public boolean equals(Object o) {
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
+        
+        EstateGeo estateGeo = (EstateGeo)o;
+        if (this.zipCode != null && estateGeo.zipCode != null && !this.zipCode.equals(estateGeo.zipCode)) {
+            return false;
+        }
+        if (this.city != null && estateGeo.city != null && !this.city.equals(estateGeo.city)) {
+            return false;
+        }
+        if (this.street != null && estateGeo.street != null && !this.street.equals(estateGeo.street)) {
+            return false;
+        }
+        if (this.houseNo != null && estateGeo.houseNo != null && !this.houseNo.equals(estateGeo.houseNo)) {
+            return false;
+        }
+        if (this.location != null && estateGeo.location != null && !this.location.equals(estateGeo.location)) {
+            return false;
+        }
+        return true;
+    }
+    
+    @Override
+    public int hashCode() {
+        final int prime = 31;
+        int hashCode = 1;
+        hashCode = prime * hashCode + (zipCode == null ? 0 : zipCode.hashCode());
+        hashCode = prime * hashCode + (city == null ? 0 : city.hashCode());
+        hashCode = prime * hashCode + (street == null ? 0 : street.hashCode());
+        hashCode = prime * hashCode + (houseNo == null ? 0 : houseNo.hashCode());
+        hashCode = prime * hashCode + (location == null ? 0 : location.hashCode());
+        return hashCode;
+    }
 }

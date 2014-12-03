@@ -1,6 +1,6 @@
 package de.joeakeem.elasticimmo.service;
 
-import org.elasticsearch.common.geo.GeoPoint;
+import de.joeakeem.elasticimmo.model.EstateGeo;
 
 
 /**
@@ -11,6 +11,6 @@ import org.elasticsearch.common.geo.GeoPoint;
  */
 public interface GeoCodingService {
     
-    GeoPoint geocode(String city);
+    EstateGeo geocode(EstateGeo newGeo, EstateGeo oldGeo);
 
 }
