@@ -1,0 +1,282 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+	<xs:element name="GEOCODE">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element name="INPUT" minOccurs="1" maxOccurs="1">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="STR" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="STRHNR" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="STRHNRAPP" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="HNRAPP" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="HNR" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="ADDINFO" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="APP" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="BLOCKNAME" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="KM" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="ZIP" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="CITY" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="DIST" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="ID" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="FROM" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="TO" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="INPUTTYPE" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="OUTPUTTYPE" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="ZIPCITY" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="KGS" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="ADMNAME" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="ADMCODE" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="MODE" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="SML" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="POINAME" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="POITYPE" type="xs:string" minOccurs="0" maxOccurs="1"/>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="SUMMARY" minOccurs="1" maxOccurs="1">
+					<xs:complexType>
+						<xs:all>
+							<xs:element name="ACC" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="RECORDS" type="xs:integer" minOccurs="1" maxOccurs="1"/>
+							<xs:element name="MESSAGE" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="PRJ" minOccurs="0" maxOccurs="1">
+								<xs:simpleType>
+									<xs:restriction base="xs:string">
+										<xs:enumeration value="WGS84"/>
+										<xs:enumeration value="LAMBERTDE"/>
+										<xs:enumeration value="LAMBERTEU"/>
+										<xs:enumeration value="GK2"/>
+										<xs:enumeration value="GK3"/>
+										<xs:enumeration value="GK4"/>
+										<xs:enumeration value="GK5"/>
+										<xs:enumeration value="DHDN"/>
+										<xs:enumeration value="LAMBERTAT"/>
+										<xs:enumeration value="LAMBERTUSA"/>
+										<xs:enumeration value="UTM32N"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="RELEASEDATE" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="CTRISO" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="SRC" minOccurs="0" maxOccurs="1">
+								<xs:simpleType>
+									<xs:restriction base="xs:integer">
+										<xs:enumeration value="1"/>
+										<xs:enumeration value="2"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="DBSRC" type="xs:string" minOccurs="0" maxOccurs="1"/>
+							<xs:element name="QUALID" minOccurs="1" maxOccurs="1">
+								<xs:simpleType>
+									<xs:restriction base="xs:integer">
+										<xs:minInclusive value="101000"/>
+										<xs:maxInclusive value="990000"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="EDITID" minOccurs="1" maxOccurs="1">
+							<xs:simpleType>
+									<xs:restriction base="xs:integer">
+										<xs:minInclusive value="0"/>
+										<xs:maxInclusive value="100"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="ERRORCODE" minOccurs="1" maxOccurs="1">
+							<xs:simpleType>
+									<xs:restriction base="xs:integer">
+										<xs:minInclusive value="0"/>
+										<xs:maxInclusive value="100"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="ORDERSH" minOccurs="0" maxOccurs="1">
+							<xs:simpleType>
+									<xs:restriction base="xs:integer">
+										<xs:enumeration value="0"/>
+										<xs:enumeration value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="ORDERZC" minOccurs="0" maxOccurs="1">
+							<xs:simpleType>
+									<xs:restriction base="xs:integer">
+										<xs:enumeration value="0"/>
+										<xs:enumeration value="1"/>
+									</xs:restriction>
+								</xs:simpleType>
+							</xs:element>
+							<xs:element name="GCQUALFLAG" minOccurs="1" maxOccurs="1">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="STR" minOccurs="1" maxOccurs="1">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="0"/>
+													<xs:maxInclusive value="6"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="HNR" minOccurs="1" maxOccurs="1">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="0"/>
+													<xs:maxInclusive value="6"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="ZIP" minOccurs="1" maxOccurs="1">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="0"/>
+													<xs:maxInclusive value="6"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="CITY" minOccurs="1" maxOccurs="1">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="0"/>
+													<xs:maxInclusive value="6"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="APP" minOccurs="1" maxOccurs="1">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="0"/>
+													<xs:maxInclusive value="6"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+										<xs:element name="DIST" minOccurs="1" maxOccurs="1">
+											<xs:simpleType>
+												<xs:restriction base="xs:integer">
+													<xs:minInclusive value="0"/>
+													<xs:maxInclusive value="6"/>
+												</xs:restriction>
+											</xs:simpleType>
+										</xs:element>
+									</xs:all>
+								</xs:complexType>
+							</xs:element>
+						</xs:all>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="OUTPUT" minOccurs="0" maxOccurs="1">
+					<xs:complexType>
+						<xs:sequence>
+							<xs:element name="SET" minOccurs="1" maxOccurs="unbounded">
+								<xs:complexType>
+									<xs:all>
+										<xs:element name="ID" minOccurs="1" maxOccurs="1" type="xs:integer"/>
+										<xs:element name="CTR" minOccurs="0" maxOccurs="1" type="xs:string"/>
+										<xs:element name="CTRISO" minOccurs="0" maxOccurs="1" type="xs:string"/>
+										<xs:element name="DISTANCE" minOccurs="0" maxOccurs="1" type="xs:string"/>
+										<xs:element name="GEOZONETYPE" minOccurs="0" maxOccurs="1" type="xs:string"/>
+										<xs:element name="LNGCODE" minOccurs="0" maxOccurs="1" type="xs:string"/>
+										<xs:element name="STR" minOccurs="0" maxOccurs="1" type="xs:string"/>
+										<xs:element name="HNR" minOccurs="0" maxOccurs="1" type="xs:string"/>
+										<xs:element name="APP" minOccurs="0" maxOccurs="1" type="xs:string"/>
+										<xs:element name="HNRTYPE" minOccurs="0" maxOccurs="1" type="xs:integer"/>
+										<xs:element name="ZIP" minOccurs="0" maxOccurs="1" type="xs:string"/>
+										<xs:element name="ZIPNAME" minOccurs="0" maxOccurs="1" type="xs:string"/>
+										<xs:element name="ZIPCITY" minOccurs="0" maxOccurs="1" type="xs:string"/>
+										<xs:element name="CITY" minOccurs="0" maxOccurs="1" type="xs:string"/>
+										<xs:element name="DIST" minOccurs="0" maxOccurs="1" type="xs:string"/>
+										<xs:element name="ADMCODE" minOccurs="0" maxOccurs="1" type="xs:string"/>
+										<xs:element name="ADMNAME" minOccurs="0" maxOccurs="1" type="xs:string"/>
+										<xs:element name="XCOOR" minOccurs="0" maxOccurs="1" type="xs:decimal"/>
+										<xs:element name="YCOOR" minOccurs="0" maxOccurs="1" type="xs:decimal"/>
+										<xs:element name="COQ" minOccurs="0" maxOccurs="1" type="xs:integer"/>
+										<xs:element name="XMIN" minOccurs="0" maxOccurs="1" type="xs:decimal"/>
+										<xs:element name="YMIN" minOccurs="0" maxOccurs="1" type="xs:decimal"/>
+										<xs:element name="XMAX" minOccurs="0" maxOccurs="1" type="xs:decimal"/>
+										<xs:element name="YMAX" minOccurs="0" maxOccurs="1" type="xs:decimal"/>
+										<xs:element name="SMLSTR" minOccurs="0" maxOccurs="1" type="xs:integer"/>
+										<xs:element name="STRCODEFLAG" minOccurs="0" maxOccurs="1" type="xs:integer"/>
+										<xs:element name="SMLCITY" minOccurs="0" maxOccurs="1" type="xs:integer"/>
+										<xs:element name="SMLDIST" minOccurs="0" maxOccurs="1" type="xs:integer"/>
+										<xs:element name="SMLZIPNAME" minOccurs="0" maxOccurs="1" type="xs:integer"/>
+										<xs:element name="INFO" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:sequence>
+													<xs:any minOccurs="1" processContents="skip" maxOccurs="unbounded"/>
+												</xs:sequence>
+											</xs:complexType>
+										</xs:element>
+										<xs:element name="GCQUALDETAILS" minOccurs="0" maxOccurs="1">
+											<xs:complexType>
+												<xs:all>
+													<xs:element name="STR" minOccurs="1" maxOccurs="1">
+														<xs:simpleType>
+															<xs:restriction base="xs:integer">
+																<xs:minInclusive value="0"/>
+																<xs:maxInclusive value="6"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="HNR" minOccurs="1" maxOccurs="1">
+														<xs:simpleType>
+															<xs:restriction base="xs:integer">
+																<xs:minInclusive value="0"/>
+																<xs:maxInclusive value="6"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="ZIP" minOccurs="1" maxOccurs="1">
+														<xs:simpleType>
+															<xs:restriction base="xs:integer">
+																<xs:minInclusive value="0"/>
+																<xs:maxInclusive value="6"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="CITY" minOccurs="1" maxOccurs="1">
+														<xs:simpleType>
+															<xs:restriction base="xs:integer">
+																<xs:minInclusive value="0"/>
+																<xs:maxInclusive value="6"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="APP" minOccurs="1" maxOccurs="1">
+														<xs:simpleType>
+															<xs:restriction base="xs:integer">
+																<xs:minInclusive value="0"/>
+																<xs:maxInclusive value="6"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+													<xs:element name="DIST" minOccurs="1" maxOccurs="1">
+														<xs:simpleType>
+															<xs:restriction base="xs:integer">
+																<xs:minInclusive value="0"/>
+																<xs:maxInclusive value="6"/>
+															</xs:restriction>
+														</xs:simpleType>
+													</xs:element>
+												</xs:all>
+											</xs:complexType>
+										</xs:element>
+									</xs:all>
+									<xs:attribute name="NR" use="required">
+										<xs:simpleType>
+											<xs:restriction base="xs:integer">
+												<xs:minInclusive value="0"/>
+												<xs:maxInclusive value="1000"/>
+											</xs:restriction>
+										</xs:simpleType>
+									</xs:attribute>
+								</xs:complexType>
+							</xs:element>
+						</xs:sequence>
+					</xs:complexType>
+				</xs:element>
+				<xs:element name="DEBUG" type="xs:integer" minOccurs="0" maxOccurs="1"/>
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+</xs:schema>
