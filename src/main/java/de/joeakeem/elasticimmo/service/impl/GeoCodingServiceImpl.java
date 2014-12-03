@@ -1,7 +1,10 @@
 package de.joeakeem.elasticimmo.service.impl;
 
+import javax.inject.Inject;
+
 import org.elasticsearch.common.geo.GeoPoint;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestTemplate;
 
 import de.joeakeem.elasticimmo.model.EstateGeo;
 import de.joeakeem.elasticimmo.service.GeoCodingService;
@@ -25,6 +28,9 @@ public class GeoCodingServiceImpl implements GeoCodingService {
      * The time in milliseconds when the current key expires
      */
     private long keyExpirationTime = 0;
+    
+    @Inject
+    private RestTemplate wiGeoGisRestTemplate;
     
     @Override
     public EstateGeo geocode(EstateGeo newGeo, EstateGeo oldGeo) {
