@@ -79,15 +79,17 @@
 		<property name="classesToBeBound">
 			<list>
 				<value>de.joeakeem.elasticimmo.wigeogis.model.GEOCODE</value>
+				<value>de.joeakeem.elasticimmo.wigeogis.model.GETKEY</value>
 			</list>
 		</property>
 	</bean>
-	
+
 	<bean id="wiGeoGisRestTemplate" class="org.springframework.web.client.RestTemplate">
         <property name="messageConverters">
             <list>
                 <bean class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
                 	<property name="unmarshaller" ref="wiGeoGisUnmarshaller" />
+                	<property name="marshaller" ref="wiGeoGisUnmarshaller" />
                 </bean>
             </list>
         </property>

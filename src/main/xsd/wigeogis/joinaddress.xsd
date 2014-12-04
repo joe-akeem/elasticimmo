@@ -1,5 +1,31 @@
 <?xml version="1.0" encoding="UTF-8"?>
 <xs:schema xmlns:xs="http://www.w3.org/2001/XMLSchema">
+
+	<xs:element name="GETKEY">
+		<xs:complexType>
+			<xs:sequence>
+				<xs:element type="xs:string" name="STATUS" minOccurs="0"
+					maxOccurs="1" />
+				<xs:element type="xs:string" name="KEY" minOccurs="0"
+					maxOccurs="1" />
+				<xs:element type="xs:string" name="MESSAGE" minOccurs="0"
+					maxOccurs="1" />
+				<xs:element name="ERRORCODE" minOccurs="0" maxOccurs="1">
+					<xs:simpleType>
+						<xs:restriction base="xs:integer">
+							<xs:minInclusive value="0" />
+							<xs:maxInclusive value="100" />
+						</xs:restriction>
+					</xs:simpleType>
+				</xs:element>
+				<xs:element type="xs:byte" name="USERID" minOccurs="0"
+					maxOccurs="1" />
+				<xs:element type="xs:string" name="KONTO" minOccurs="0"
+					maxOccurs="1" />
+			</xs:sequence>
+		</xs:complexType>
+	</xs:element>
+
 	<xs:element name="GEOCODE">
 		<xs:complexType>
 			<xs:sequence>
