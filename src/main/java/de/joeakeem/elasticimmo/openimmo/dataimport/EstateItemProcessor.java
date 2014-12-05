@@ -3,6 +3,8 @@ package de.joeakeem.elasticimmo.openimmo.dataimport;
 import javax.inject.Inject;
 
 import org.dozer.DozerBeanMapper;
+import org.slf4j.Logger;
+import org.slf4j.LoggerFactory;
 import org.springframework.batch.item.ItemProcessor;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Component;
@@ -20,6 +22,9 @@ import de.joeakeem.elasticimmo.service.GeoCodingService;
  */
 @Component
 public class EstateItemProcessor implements ItemProcessor<Immobilie, Estate> {
+    
+    private static final Logger LOG = LoggerFactory
+            .getLogger(EstateItemProcessor.class);
 
     @Inject
     private DozerBeanMapper dozerBeanMapper;
@@ -52,7 +57,15 @@ public class EstateItemProcessor implements ItemProcessor<Immobilie, Estate> {
         
         EstateGeo newEstateGeo = estate.getEstateGeo();
         
-        estate.setEstateGeo(geoCodingService.geocode(newEstateGeo, previousEstateGeo));
+        
+        try {
+            estate.setEstateGeo(geoCodingService.geocode(newEstateGeo, previousEstateGeo));
+            
+        } catch (Exception e) {
+            LOG.error("Failed to geo code estate. Skipping record...", e);
+            return null;
+        }
+        
         estate.setDistributor(distributor);
         estate.setPortal(portal);
         return estate;

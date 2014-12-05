@@ -38,6 +38,7 @@ public class EstateGeoConverterTest {
         assertNull(estateGeoConverter.convert(converted, null, EstateGeo.class, Geo.class));
         
         List<Object> content = new ArrayList<Object>();
+        content.add(new JAXBElement<String>(new QName("land"), String.class, "DEU"));
         content.add(new JAXBElement<String>(new QName("plz"), String.class, "plz"));
         content.add(new JAXBElement<String>(new QName("ort"), String.class, "ort"));
         content.add(new JAXBElement<String>(new QName("strasse"), String.class, "strasse"));
@@ -53,6 +54,7 @@ public class EstateGeoConverterTest {
         
         converted = (EstateGeo) estateGeoConverter.convert(converted, geoSource, EstateGeo.class, Geo.class);
         
+        assertEquals(converted.getIsoCountryCode(), "DEU");
         assertEquals(converted.getZipCode(), "plz");
         assertEquals(converted.getCity(), "ort");
         assertEquals(converted.getStreet(), "strasse");

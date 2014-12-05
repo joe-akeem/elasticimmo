@@ -35,6 +35,9 @@ public class EstateGeoConverter implements CustomConverter {
                 JAXBElement e = (JAXBElement) o;
                 String name = e.getName().getLocalPart();
                 Object value = e.getValue();
+                if ("land".equals(name)) {
+                    destinationGeo.setIsoCountryCode((String) value);
+                }
                 if ("plz".equals(name)) {
                     destinationGeo.setZipCode((String) e.getValue());
                 } else if ("ort".equals(name)) {

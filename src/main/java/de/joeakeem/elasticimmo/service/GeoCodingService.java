@@ -1,5 +1,9 @@
 package de.joeakeem.elasticimmo.service;
 
+import java.io.IOException;
+
+import org.springframework.web.client.RestClientException;
+
 import de.joeakeem.elasticimmo.model.EstateGeo;
 
 
@@ -11,6 +15,6 @@ import de.joeakeem.elasticimmo.model.EstateGeo;
  */
 public interface GeoCodingService {
     
-    EstateGeo geocode(EstateGeo newGeo, EstateGeo oldGeo);
+    EstateGeo geocode(EstateGeo newGeo, EstateGeo oldGeo) throws RestClientException, IOException;
 
 }

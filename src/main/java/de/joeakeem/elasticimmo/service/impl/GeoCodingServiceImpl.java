@@ -1,7 +1,8 @@
 package de.joeakeem.elasticimmo.service.impl;
 
-import java.util.HashMap;
-import java.util.Map;
+import java.io.IOException;
+import java.math.BigDecimal;
+import java.net.URLEncoder;
 
 import javax.inject.Inject;
 
@@ -10,10 +11,12 @@ import org.slf4j.Logger;
 import org.slf4j.LoggerFactory;
 import org.springframework.beans.factory.annotation.Value;
 import org.springframework.stereotype.Service;
+import org.springframework.web.client.RestClientException;
 import org.springframework.web.client.RestTemplate;
 
 import de.joeakeem.elasticimmo.model.EstateGeo;
 import de.joeakeem.elasticimmo.service.GeoCodingService;
+import de.joeakeem.elasticimmo.wigeogis.model.GEOCODE;
 import de.joeakeem.elasticimmo.wigeogis.model.GETKEY;
 
 /**
@@ -49,9 +52,54 @@ public class GeoCodingServiceImpl implements GeoCodingService {
 	private static final String TYPE = "TYPE";
 	
 	/**
-	 * Status code of the WiGeoGis response for successfule requests.
+     * The WiGeoGis request projection variable.
+     */
+    private static final String PRJ = "PRJ";
+    
+    /**
+     * The WiGeoGis default projection that we use.
+     */
+    private static final String DEFAULT_PRJ = "WGS84";
+    
+    /**
+     * The WiGeoGis request key variable.
+     */
+    private static final String KEY = "KEY";
+    
+    /**
+     * The WiGeoGis request city variable.
+     */
+    private static final String CITY = "CITY";
+    
+    /**
+     * The WiGeoGis request ZIP code variable.
+     */
+    private static final String ZIP = "ZIP";
+    
+    /**
+     * The WiGeoGis request street variable.
+     */
+    private static final String STR = "STR";
+    
+    /**
+     * The WiGeoGis request house number variable.
+     */
+    private static final String HNR = "HNR";
+    
+    /**
+     * The WiGeoGis request ISO country variable.
+     */
+    private static final String CTRISO = "CTRISO";
+	
+	/**
+	 * Status code of the WiGeoGis response for successful requests.
 	 */
 	private static final String OK_STATUS = "OK";
+	
+	/**
+	 * Error code 0: valid geo coding
+	 */
+	private static final int ERRORCODE_0 = 0;
 	
 	/**
 	 * The URL of the WiGeoGis authentication resource.
@@ -92,7 +140,7 @@ public class GeoCodingServiceImpl implements GeoCodingService {
     private RestTemplate wiGeoGisRestTemplate;
     
     @Override
-    public EstateGeo geocode(EstateGeo newGeo, EstateGeo oldGeo) {
+    public EstateGeo geocode(EstateGeo newGeo, EstateGeo oldGeo) throws RestClientException, IOException {
         if (oldGeo != null && oldGeo.getLocation() != null && oldGeo.equals(newGeo)) {
             // we already had a loaction and it hasn't changed
             // -> no need to recalculate cooridnates
@@ -114,32 +162,93 @@ public class GeoCodingServiceImpl implements GeoCodingService {
      * @param geo
      * @return
      */
-    private GeoPoint getCoordinatesFromWiGeoGis(EstateGeo geo) {
+    private GeoPoint getCoordinatesFromWiGeoGis(EstateGeo geo) throws RestClientException, IOException {
         authenticate();
-        return new GeoPoint(48.135125, 11.581981);  // TODO: calculate new coordinates by calling WiGeoGis
+        
+        StringBuilder params = new StringBuilder();
+        params.append("?");
+        params.append(USR);
+        params.append("=");
+        params.append(usr);
+        params.append("&");
+        params.append(KEY);
+        params.append("=");
+        params.append(key);
+        params.append("&");
+        params.append(PRJ);
+        params.append("=");
+        params.append(DEFAULT_PRJ);
+        
+        if (geo.getCity() != null) {
+            params.append("&");
+            params.append(CITY);
+            params.append("=");
+            params.append(URLEncoder.encode(geo.getCity(), "UTF-8"));
+        }
+        if (geo.getZipCode() != null) {
+            params.append("&");
+            params.append(ZIP);
+            params.append("=");
+            params.append(geo.getZipCode());
+        }
+        if (geo.getStreet() != null) {
+            params.append("&");
+            params.append(STR);
+            params.append("=");
+            params.append(URLEncoder.encode(geo.getStreet(), "UTF-8"));
+        }
+        if (geo.getHouseNo() != null) {
+            params.append("&");
+            params.append(HNR);
+            params.append("=");
+            params.append(URLEncoder.encode(geo.getHouseNo(), "UTF-8"));
+        }
+        params.append("&");
+        params.append(CTRISO);
+        params.append("=");
+        params.append(geo.getIsoCountryCode() != null ? geo.getIsoCountryCode() : "DEU");
+        
+        GEOCODE response = wiGeoGisRestTemplate.getForObject(geocodeUrl + params.toString(), GEOCODE.class);
+        
+        if (response.getSUMMARY().getERRORCODE() == ERRORCODE_0) {
+            BigDecimal lat = response.getOUTPUT().getSET().get(0).getYCOOR();
+            BigDecimal lon = response.getOUTPUT().getSET().get(0).getXCOOR();
+            return new GeoPoint(lat.doubleValue(), lon.doubleValue());
+        }
+        throw new IOException("Failed to geo code "+ geo.toString() + ". (" + response.getSUMMARY().getMESSAGE() + ")");
     }
     
     /**
      * Authenticates with the WiGeoGis JoinAddress services and stores
      * the session key as a member variable.
+     * @throws IOException 
+     * @throws RestClientException 
      */
-    private void authenticate() {
+    private void authenticate() throws RestClientException, IOException {
         if (isKeyExpired()) {
-        	Map<String, String> urlVariables = new HashMap<String, String>();
-        	urlVariables.put(USR, usr);
-        	urlVariables.put(CID, cid);
-        	urlVariables.put(TYPE, "geocode");
+        	StringBuilder params = new StringBuilder();
+        	params.append("?");
+        	params.append(USR);
+        	params.append("=");
+        	params.append(usr);
+        	params.append("&");
+        	params.append(CID);
+        	params.append("=");
+        	params.append(cid);
+        	params.append("&");
+        	params.append(TYPE);
+        	params.append("=geocode");
         	
-        	GETKEY response = wiGeoGisRestTemplate.getForObject(authenticationUrl, GETKEY.class, urlVariables);
-        	
-        	if (OK_STATUS.equals(response.getSTATUS())) {
-        		key = response.getKEY();
-        		keyExpirationTime = System.currentTimeMillis() + KEY_EXPIRATION_TIMEOUT;
-        		LOG.info("Successfully authneticated with the geo coding service.");
-        	} else {
-        		LOG.error("failed to authenticate with the geo coding service: {} (error code: {})",
-        				response.getMESSAGE(), response.getERRORCODE());
-        	}
+        	GETKEY response;
+            response = wiGeoGisRestTemplate.getForObject(authenticationUrl + params.toString(), GETKEY.class);
+            if (OK_STATUS.equals(response.getSTATUS())) {
+                key = response.getKEY();
+                keyExpirationTime = System.currentTimeMillis() + KEY_EXPIRATION_TIMEOUT;
+                LOG.info("Successfully authneticated with the geo coding service.");
+            } else {
+                throw new IOException("failed to authenticate with the geo coding service: " +
+                            response.getMESSAGE() + " (error code: " + response.getERRORCODE() + ")");
+            }
         }
     }
     

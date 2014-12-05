@@ -4,6 +4,7 @@
 	xmlns:context="http://www.springframework.org/schema/context"
 	xmlns:elasticsearch="http://www.springframework.org/schema/data/elasticsearch"
 	xmlns:batch="http://www.springframework.org/schema/batch"
+	xmlns:util="http://www.springframework.org/schema/util"
 	xsi:schemaLocation="http://www.springframework.org/schema/beans
 	http://www.springframework.org/schema/beans/spring-beans-3.2.xsd
 	http://www.springframework.org/schema/context
@@ -11,7 +12,9 @@
 	http://www.springframework.org/schema/data/elasticsearch
 	http://www.springframework.org/schema/data/elasticsearch/spring-elasticsearch-1.0.xsd
 	http://www.springframework.org/schema/batch
-	http://www.springframework.org/schema/batch/spring-batch-2.2.xsd">
+	http://www.springframework.org/schema/batch/spring-batch-2.2.xsd
+	http://www.springframework.org/schema/util
+	http://www.springframework.org/schema/util/spring-util-3.2.xsd">
  
 	<context:component-scan base-package="de.joeakeem" />
 	<elasticsearch:repositories base-package="de.joeakeem" elasticsearch-template-ref="elasticsearchTemplate"/>
@@ -90,6 +93,11 @@
                 <bean class="org.springframework.http.converter.xml.MarshallingHttpMessageConverter">
                 	<property name="unmarshaller" ref="wiGeoGisUnmarshaller" />
                 	<property name="marshaller" ref="wiGeoGisUnmarshaller" />
+                	<property name="supportedMediaTypes">
+                		<list>
+                			<util:constant static-field="org.springframework.http.MediaType.ALL"/>
+                		</list>
+                	</property>
                 </bean>
             </list>
         </property>

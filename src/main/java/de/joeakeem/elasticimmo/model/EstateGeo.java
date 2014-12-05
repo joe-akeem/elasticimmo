@@ -12,6 +12,9 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
  *
  */
 public class EstateGeo {
+    
+    @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
+    private String isoCountryCode;
 
     @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String zipCode;
@@ -26,6 +29,14 @@ public class EstateGeo {
     private String houseNo;
     
     private GeoPoint location;
+    
+    public String getIsoCountryCode() {
+        return isoCountryCode;
+    }
+
+    public void setIsoCountryCode(String isoCountryCode) {
+        this.isoCountryCode = isoCountryCode;
+    }
 
     public String getZipCode() {
         return zipCode;
@@ -66,6 +77,16 @@ public class EstateGeo {
     public void setLocation(GeoPoint location) {
         this.location = location;
     }
+
+    /**
+     * @return a representation of the coordinates suitable for display e.g. on a bettermap in Kibana.
+     */
+    public double[] getLonLat() {
+        if (location != null) {
+            return new double[] {location.getLon(), location.getLat()};
+        }
+        return new double[] {};
+    }
     
     @Override
     public boolean equals(Object o) {
@@ -99,11 +120,31 @@ public class EstateGeo {
     public int hashCode() {
         final int prime = 31;
         int hashCode = 1;
+        hashCode = prime * hashCode + (isoCountryCode == null ? 0 : isoCountryCode.hashCode());
         hashCode = prime * hashCode + (zipCode == null ? 0 : zipCode.hashCode());
         hashCode = prime * hashCode + (city == null ? 0 : city.hashCode());
         hashCode = prime * hashCode + (street == null ? 0 : street.hashCode());
         hashCode = prime * hashCode + (houseNo == null ? 0 : houseNo.hashCode());
         hashCode = prime * hashCode + (location == null ? 0 : location.hashCode());
         return hashCode;
+    }
+    
+    @Override
+    public String toString() {
+        StringBuilder str = new StringBuilder();
+        str.append("[isoCountryCode=");
+        str.append(isoCountryCode);
+        str.append(", zipCode=");
+        str.append(zipCode);
+        str.append(", city=");
+        str.append(city);
+        str.append(", street=");
+        str.append(street);
+        str.append(", houseNo=");
+        str.append(houseNo);
+        str.append(", location=");
+        str.append(location != null ? location.toString() : null);
+        str.append("]");
+        return str.toString();
     }
 }
