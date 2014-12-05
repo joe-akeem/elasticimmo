@@ -100,20 +100,57 @@ public class EstateGeo {
         }
         
         EstateGeo estateGeo = (EstateGeo)o;
-        if (this.zipCode != null && estateGeo.zipCode != null && !this.zipCode.equals(estateGeo.zipCode)) {
+        return isZipCodeEquals(estateGeo.zipCode) && isCityEquals(estateGeo.city)
+                  && isStreetEquals(estateGeo.street) && isHouseNoEquals(estateGeo.houseNo)
+                  && isLocationEquals(estateGeo.location);
+    }
+    
+    protected boolean isZipCodeEquals(String otherZipCode) {
+        if (this.zipCode == null && otherZipCode != null) {
             return false;
         }
-        if (this.city != null && estateGeo.city != null && !this.city.equals(estateGeo.city)) {
+        if (this.zipCode != null) {
+            return this.zipCode.equals(otherZipCode);
+        }
+        return true;
+    }
+    
+    protected boolean isCityEquals(String otherCity) {
+        if (this.city == null && otherCity != null) {
             return false;
         }
-        if (this.street != null && estateGeo.street != null && !this.street.equals(estateGeo.street)) {
+        if (this.city != null) {
+            return this.city.equals(otherCity);
+        }
+        return true;
+    }
+    
+    protected boolean isStreetEquals(String otherStreet) {
+        if (this.street == null && otherStreet != null) {
             return false;
         }
-        if (this.houseNo != null && estateGeo.houseNo != null && !this.houseNo.equals(estateGeo.houseNo)) {
+        if (this.street != null) {
+            return this.street.equals(otherStreet);
+        }
+        return true;
+    }
+    
+    protected boolean isHouseNoEquals(String otherHouseNo) {
+        if (this.houseNo == null && otherHouseNo != null) {
             return false;
         }
-        if (this.location != null && estateGeo.location != null && !this.location.equals(estateGeo.location)) {
+        if (this.houseNo != null) {
+            return this.houseNo.equals(otherHouseNo);
+        }
+        return true;
+    }
+    
+    protected boolean isLocationEquals(GeoPoint otherLocation) {
+        if (this.location == null && otherLocation != null) {
             return false;
+        }
+        if (this.location != null) {
+            return this.location.equals(otherLocation);
         }
         return true;
     }
