@@ -53,6 +53,10 @@
 			<a>anhaenge.anhang</a>
 			<b>attachments</b>
 		</field>
+		<field>
+			<a>preise.kaufpreis.value</a>
+			<b>purchasingPrice</b>
+		</field>
 	</mapping>
 	<mapping>
 		<class-a>de.joeakeem.elasticimmo.openimmo.model.Anhang</class-a>

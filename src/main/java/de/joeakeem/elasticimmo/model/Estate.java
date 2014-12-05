@@ -67,6 +67,9 @@ public class Estate {
     
     @Field
     private GeoPoint location;
+    
+    @Field(type = FieldType.Double)
+    private double purchasingPrice;
 
     public String getId() {
         return id;
@@ -226,5 +229,13 @@ public class Estate {
 
     public void setLocation(GeoPoint location) {
         this.location = location;
+    }
+
+    public double getPurchasingPrice() {
+        return purchasingPrice;
+    }
+
+    public void setPurchasingPrice(double purchasingPrice) {
+        this.purchasingPrice = purchasingPrice;
     }
 }
