@@ -5,7 +5,6 @@ import java.util.List;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.Pageable;
 import org.springframework.data.elasticsearch.annotations.Query;
-import org.springframework.data.elasticsearch.core.query.SearchQuery;
 import org.springframework.data.elasticsearch.repository.ElasticsearchCrudRepository;
 
 import de.joeakeem.elasticimmo.model.Estate;

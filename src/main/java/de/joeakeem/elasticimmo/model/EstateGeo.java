@@ -13,6 +13,8 @@ import org.springframework.data.elasticsearch.annotations.FieldType;
  */
 public class EstateGeo {
     
+    private static final int HASH_CODE_MULTIPLIER_PRIME = 31;
+    
     @Field(type = FieldType.String, index = FieldIndex.not_analyzed)
     private String isoCountryCode;
 
@@ -118,14 +120,13 @@ public class EstateGeo {
     
     @Override
     public int hashCode() {
-        final int prime = 31;
         int hashCode = 1;
-        hashCode = prime * hashCode + (isoCountryCode == null ? 0 : isoCountryCode.hashCode());
-        hashCode = prime * hashCode + (zipCode == null ? 0 : zipCode.hashCode());
-        hashCode = prime * hashCode + (city == null ? 0 : city.hashCode());
-        hashCode = prime * hashCode + (street == null ? 0 : street.hashCode());
-        hashCode = prime * hashCode + (houseNo == null ? 0 : houseNo.hashCode());
-        hashCode = prime * hashCode + (location == null ? 0 : location.hashCode());
+        hashCode = HASH_CODE_MULTIPLIER_PRIME * hashCode + (isoCountryCode == null ? 0 : isoCountryCode.hashCode());
+        hashCode = HASH_CODE_MULTIPLIER_PRIME * hashCode + (zipCode == null ? 0 : zipCode.hashCode());
+        hashCode = HASH_CODE_MULTIPLIER_PRIME * hashCode + (city == null ? 0 : city.hashCode());
+        hashCode = HASH_CODE_MULTIPLIER_PRIME * hashCode + (street == null ? 0 : street.hashCode());
+        hashCode = HASH_CODE_MULTIPLIER_PRIME * hashCode + (houseNo == null ? 0 : houseNo.hashCode());
+        hashCode = HASH_CODE_MULTIPLIER_PRIME * hashCode + (location == null ? 0 : location.hashCode());
         return hashCode;
     }
     
