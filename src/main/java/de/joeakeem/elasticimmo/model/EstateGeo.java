@@ -100,7 +100,7 @@ public class EstateGeo {
         }
         
         EstateGeo estateGeo = (EstateGeo)o;
-        return isZipCodeEquals(estateGeo.zipCode) && isCityEquals(estateGeo.city)
+        return isZipCodeEquals(estateGeo.zipCode) && isCityEquals(estateGeo.city) // NOSONAR
                   && isStreetEquals(estateGeo.street) && isHouseNoEquals(estateGeo.houseNo)
                   && isLocationEquals(estateGeo.location);
     }
